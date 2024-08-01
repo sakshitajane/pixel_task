@@ -62,10 +62,10 @@ class _UserListPageState extends State<UserListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('User List'),
+        title: const Text('User List'),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Colors.red, Colors.purple],
             begin: Alignment.topLeft,
@@ -78,15 +78,15 @@ class _UserListPageState extends State<UserListPage> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Spacer(),
+                  const Spacer(),
                   Expanded(
                     child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 4.0),
-                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(8.0),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             color: Colors.black26,
                             blurRadius: 4.0,
@@ -95,7 +95,7 @@ class _UserListPageState extends State<UserListPage> {
                       ),
                       child: DropdownButton<String>(
                         isExpanded: true,
-                        hint: Text('Filter by Gender'),
+                        hint: const Text('Filter by Gender'),
                         value: filterGender.isEmpty ? null : filterGender,
                         onChanged: (String? newValue) {
                           setState(() {
@@ -112,15 +112,15 @@ class _UserListPageState extends State<UserListPage> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 8.0),
+                  const SizedBox(width: 8.0),
                   Expanded(
                     child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 4.0),
-                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(8.0),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             color: Colors.black26,
                             blurRadius: 4.0,
@@ -129,7 +129,7 @@ class _UserListPageState extends State<UserListPage> {
                       ),
                       child: DropdownButton<String>(
                         isExpanded: true,
-                        hint: Text('Filter by Card Type'),
+                        hint: const Text('Filter by Card Type'),
                         value: filterCardType.isEmpty ? null : filterCardType,
                         onChanged: (String? newValue) {
                           setState(() {
@@ -163,7 +163,7 @@ class _UserListPageState extends State<UserListPage> {
             Expanded(
               child: SingleChildScrollView(
                 child: PaginatedDataTable(
-                  header: Text('Users'),
+                  header: const Text('Users'),
                   rowsPerPage: rowsPerPage,
                   onRowsPerPageChanged: (int? value) {
                     setState(() {
@@ -175,32 +175,32 @@ class _UserListPageState extends State<UserListPage> {
                   sortAscending: sortAscending,
                   columns: [
                     DataColumn(
-                      label: Text('ID'),
+                      label: const Text('ID'),
                       numeric: true,
                       onSort: (int columnIndex, bool ascending) => sort<num>(
                           (User user) => user.id, columnIndex, ascending),
                     ),
                     DataColumn(
-                      label: Text('First Name'),
+                      label: const Text('First Name'),
                       onSort: (int columnIndex, bool ascending) => sort<String>(
                           (User user) => user.firstName,
                           columnIndex,
                           ascending),
                     ),
                     DataColumn(
-                      label: Text('Last Name'),
+                      label: const Text('Last Name'),
                       onSort: (int columnIndex, bool ascending) => sort<String>(
                           (User user) => user.lastName, columnIndex, ascending),
                     ),
                     DataColumn(
-                      label: Text('Age'),
+                      label: const Text('Age'),
                       numeric: true,
                       onSort: (int columnIndex, bool ascending) => sort<num>(
                           (User user) => user.age, columnIndex, ascending),
                     ),
-                    DataColumn(label: Text('Gender')),
-                    DataColumn(label: Text('Card Type')),
-                    DataColumn(label: Text('Image')),
+                    const DataColumn(label: Text('Gender')),
+                    const DataColumn(label: Text('Card Type')),
+                    const DataColumn(label: Text('Image')),
                   ],
                   source: UserDataSource(users, filterGender, filterCardType),
                 ),
